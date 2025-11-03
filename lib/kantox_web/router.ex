@@ -21,9 +21,14 @@ defmodule KantoxWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", KantoxWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", KantoxWeb do
+    pipe_through :api
+
+    get "/shopping-carts", ShoppingCartController, :index
+    get "/shopping-carts/:id", ShoppingCartController, :show
+    post "/shopping-carts", ShoppingCartController, :create
+    post "/shopping-carts/:id/products/:product_id", ShoppingCartController, :create_item
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:kantox, :dev_routes) do

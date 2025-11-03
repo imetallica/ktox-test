@@ -19,15 +19,14 @@ defmodule KantoxWeb.ConnCase do
 
   using do
     quote do
+      use KantoxWeb, :verified_routes
+      import KantoxWeb.ConnCase
+      import Phoenix.ConnTest
+      import Plug.Conn
       # The default endpoint for testing
       @endpoint KantoxWeb.Endpoint
 
-      use KantoxWeb, :verified_routes
-
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import KantoxWeb.ConnCase
     end
   end
 
